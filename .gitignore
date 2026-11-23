@@ -1,0 +1,9 @@
+# Exportaciones con nombres, teléfonos, DNI y otros campos personales.
+*.csv
+*.xlsx
+*.parquet
+*.bak
+*.bacpac
+.env
+**/.ipynb_checkpoints/
+# El proyecto conserva explícitamente el PBIX histórico.
