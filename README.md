@@ -48,12 +48,24 @@ El ETL actual **no usa staging físico**. Es una carga completa: vacía las dime
 ├── README.md
 ├── sql/
 │   ├── 01_origen/crear_esquema.sql
+│   ├── 01_origen/02_cargar_datos_sinteticos.sql
+│   ├── 01_origen/transaccional_original_completo.sql
 │   ├── 02_datamart/crear_datamart.sql
 │   ├── 03_etl/cargar_datamart.sql
 │   └── 04_validaciones/validaciones.sql
 ├── bigdata/
 │   ├── README.md
-│   └── ejemplo_pyspark.py
+│   ├── ejemplo_pyspark.py
+│   ├── DNX_Cauchos_BigData.ipynb
+│   └── DNX_Cauchos_BigData_original.ipynb.gz
+├── data/
+│   └── exports/
+│       ├── dim_cliente_01.csv.gz ... dim_cliente_08.csv.gz
+│       ├── dim_producto.csv.gz / dim_vendedor.csv.gz
+│       ├── dim_tiempo.csv.gz / dim_metodoPago.csv.gz
+│       ├── Hecho_ventas.csv.gz
+│       ├── MANIFIESTO.json
+│       └── reconstruir_csv.py
 ├── powerbi/README.md
 ├── docs/decisiones_tecnicas.md
 ├── 01_Base_Datos_Origen.sql      # legado, conservado
@@ -84,7 +96,7 @@ En la tabla de hechos: `monto_venta = cantidad * precio_unitario`; `total_venta 
 **Requisitos:** SQL Server con permisos para crear bases de datos, SSMS y ambas bases en la misma instancia. Usar una instancia de pruebas: el script ETL elimina el contenido previo del Data Mart.
 
 1. Crear la base de origen con [`sql/01_origen/crear_esquema.sql`](sql/01_origen/crear_esquema.sql). Este archivo contiene **solo DDL**, no inserta datos.
-2. Importar/cargar registros de ejemplo del origen **previamente anonimizados**. La versión inicial del repositorio cuenta con [un script histórico](01_Base_Datos_Origen.sql), pero no debe confundirse con el conjunto de datos de la versión ampliada.
+2. Ejecutar [`sql/01_origen/02_cargar_datos_sinteticos.sql`](sql/01_origen/02_cargar_datos_sinteticos.sql), que contiene las inserciones del origen ampliado con **datos sintéticos generados para este proyecto académico**. El original íntegro (DDL + DML) se conserva en [`transaccional_original_completo.sql`](sql/01_origen/transaccional_original_completo.sql) para trazabilidad, pero **no debe ejecutarse directamente sobre una base nueva**: incluye `DELETE` de tablas aún no creadas. La versión histórica de la raíz corresponde a otra carga de ejemplo.
 3. Ejecutar [`sql/02_datamart/crear_datamart.sql`](sql/02_datamart/crear_datamart.sql).
 4. Ejecutar [`sql/03_etl/cargar_datamart.sql`](sql/03_etl/cargar_datamart.sql).
 5. Ejecutar [`sql/04_validaciones/validaciones.sql`](sql/04_validaciones/validaciones.sql) y comparar los registros del origen y el Data Mart.
@@ -107,18 +119,20 @@ En la tabla de hechos: `monto_venta = cantidad * precio_unitario`; `total_venta 
 
 El notebook académico entregado se apoyó en seis CSV exportados del Data Mart y preparó transformaciones en PySpark, tablas Delta e indicadores por año, producto, vendedor y distrito. Incluye un parámetro de control de descuentos de S/ 30,000 anual, utilizado como referencia analítica, **no como política comercial confirmada de la empresa**.
 
-Los CSV de clientes y vendedores contienen campos como nombres, DNI y teléfonos, y por eso **no se publican en esta versión abierta**. En [`bigdata/README.md`](bigdata/README.md) se documentan los archivos esperados, los recuentos observados y el acceso desde Databricks. Se proporciona un ejemplo de lectura, no una reproducción íntegra del notebook original.
+**Material completo publicado:** [notebook PySpark editable](bigdata/DNX_Cauchos_BigData.ipynb) (mismo código y celdas, sin salidas guardadas), [notebook original íntegro comprimido](bigdata/DNX_Cauchos_BigData_original.ipynb.gz) (con sus resultados), [CSV completos comprimidos](data/exports/) y [script de reconstrucción](data/exports/reconstruir_csv.py). Los CSV son datos **sintéticos generados para fines académicos**, de acuerdo con la declaración del autor. Aunque contienen nombres, identificadores y teléfonos con formato realista, **no deben tratarse como datos verificados de personas o empresas reales**.
+
+La exportación `dim_cliente.csv` (240 000 filas) se almacena en ocho partes `.csv.gz` de 30 000 filas cada una; los demás archivos se comprimen individualmente. El script de reconstrucción reúne las partes en sus CSV originales y verifica sus SHA-256 contra `MANIFIESTO.json`. El notebook original `.ipynb.gz` se puede descomprimir con gzip. [Instrucciones](bigdata/README.md).
 
 ## Evidencias y pendientes
 
 | Elemento | Estado |
 |---|---|
-| Scripts SQL organizados | Disponibles en `sql/` |
+| Scripts SQL organizados | Disponibles en `sql/`, incluido origen sintético completo |
 | Definición de dimensiones/hechos | Disponible |
 | Validaciones de consistencia | Script disponible, ejecución pendiente |
 | Power BI histórico | Disponible en la raíz |
-| Notebook completo de Databricks | [pendiente de publicar versión revisada y sin resultados sensibles] |
-| CSV originales | No publicados por precaución de privacidad |
+| Notebook de Databricks | Publicado: versión editable y original comprimido |
+| CSV originales | Publicados en gzip y fragmentados; reconstrucción con verificación SHA-256 |
 | Captura de esquema estrella | [pendiente] |
 | Capturas de ETL y dashboard final | [pendiente] |
 | Medidas DAX y KPI del PBIX final | [pendiente] |

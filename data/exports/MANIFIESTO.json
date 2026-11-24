@@ -1,0 +1,32 @@
+[
+  {
+    "file": "dim_cliente.csv",
+    "size_bytes": 20300065,
+    "sha256": "bf1f39a9426a2bc48762080584ae0b84cc96747b6bcab35d1874bb8a0589426b"
+  },
+  {
+    "file": "dim_producto.csv",
+    "size_bytes": 2255711,
+    "sha256": "fa1b77e8bdd5a106ea5b69f3e98b65079ed791088c28eb59d91ba8d77bd82a68"
+  },
+  {
+    "file": "dim_vendedor.csv",
+    "size_bytes": 1893271,
+    "sha256": "a54c31277402caf6bcd59168be153430f3b4f167a6cf3ed190c635e2286cd1d4"
+  },
+  {
+    "file": "dim_tiempo.csv",
+    "size_bytes": 24137,
+    "sha256": "4b67a4091c15bec9b080fdff178912fde3e8375f8e8c8b6b17f08cbecb7e9e02"
+  },
+  {
+    "file": "dim_metodoPago.csv",
+    "size_bytes": 198,
+    "sha256": "604fb0fa2d6d5ce5e7c22101f672fda406ce01f1f3cfd609c421c0ffdcb71b1e"
+  },
+  {
+    "file": "Hecho_ventas.csv",
+    "size_bytes": 246915,
+    "sha256": "7d2430769a3f1d1a99999849d3ef34b3aa8f57c173da30f179e1d26fa613d104"
+  }
+]
