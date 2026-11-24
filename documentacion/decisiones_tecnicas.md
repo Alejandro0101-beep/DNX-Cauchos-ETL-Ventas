@@ -4,13 +4,13 @@
 
 Los tres SQL nuevos facilitados para la revisión son distintos de los scripts de la raíz, que corresponden al historial inicial del repositorio. Se mantienen ambos conjuntos sin sustituir silenciosamente el contenido anterior.
 
-- `sql/01_origen/crear_esquema.sql`: solo DDL extraído del script transaccional ampliado. Se retiró el bloque de `DELETE` previo a crear las tablas.
-- `sql/01_origen/02_cargar_datos_sinteticos.sql`: inserciones originales de datos sintéticos, para ejecutar después del esquema.
-- `sql/01_origen/transaccional_original_completo.sql`: script original íntegro de referencia (contiene `DELETE` antes de `CREATE TABLE`, por lo que **no** es el instalador recomendado).
-- `sql/02_datamart/original_datamart_completo.sql` y `sql/03_etl/original_etl_completo.sql`: copias de los scripts entregados, sin modificación. El ETL original usa `RESEED, 1`; el script de carga recomendado se corrigió a `RESEED, 0`.
-- `sql/02_datamart/crear_datamart.sql`: definición de las cinco dimensiones y `hecho_ventas`.
-- `sql/03_etl/cargar_datamart.sql`: script ETL entregado con `DBCC CHECKIDENT(..., RESEED, 0)` en lugar de `RESEED, 1`. En tablas con `IDENTITY(1,1)` que fueron vaciadas con `DELETE`, esa corrección permite comenzar las nuevas filas en 1.
-- `sql/04_validaciones/validaciones.sql`: consultas adicionales para verificar estados y correspondencias.
+- `sql/01_transaccional/01_crear_esquema.sql`: solo DDL extraído del script transaccional ampliado. Se retiró el bloque de `DELETE` previo a crear las tablas.
+- `sql/01_transaccional/02_cargar_datos_sinteticos.sql`: inserciones originales de datos sintéticos, para ejecutar después del esquema.
+- `archivo/sql/transaccional_original_completo.sql`: script original íntegro de referencia (contiene `DELETE` antes de `CREATE TABLE`, por lo que **no** es el instalador recomendado).
+- `archivo/sql/etl_original_reseed1.sql` (el Data Mart original era idéntico a `sql/02_datamart/01_crear_datamart.sql` y se eliminó el duplicado): copias de los scripts entregados, sin modificación. El ETL original usa `RESEED, 1`; el script de carga recomendado se corrigió a `RESEED, 0`.
+- `sql/02_datamart/01_crear_datamart.sql`: definición de las cinco dimensiones y `hecho_ventas`.
+- `sql/03_etl/01_cargar_datamart.sql`: script ETL entregado con `DBCC CHECKIDENT(..., RESEED, 0)` en lugar de `RESEED, 1`. En tablas con `IDENTITY(1,1)` que fueron vaciadas con `DELETE`, esa corrección permite comenzar las nuevas filas en 1.
+- `sql/04_validaciones/01_validaciones_origen_vs_datamart.sql` y `02_validaciones_post_etl.sql` (esta última era el tramo final del ETL): consultas adicionales para verificar estados y correspondencias.
 
 ## Observaciones pendientes de comprobación
 

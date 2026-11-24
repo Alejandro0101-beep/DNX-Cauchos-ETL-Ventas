@@ -1,9 +1,17 @@
-# Exportaciones con nombres, teléfonos, DNI y otros campos personales.
+# Sistema operativo y Office
+Thumbs.db
+Desktop.ini
+.DS_Store
+~$*
+*.tmp
+
+# Exportaciones con datos personales o voluminosos (los .csv.gz de data/exports sí se versionan)
 *.csv
 *.xlsx
 *.parquet
 *.bak
 *.bacpac
+
+# Entorno y notebooks
 .env
 **/.ipynb_checkpoints/
-# El proyecto conserva explícitamente el PBIX histórico.
