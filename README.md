@@ -52,7 +52,7 @@ SQL Server (dm_DNX_Cauchos_SRL)             Data Mart
 3. [`sql/02_datamart/01_crear_datamart.sql`](sql/02_datamart/01_crear_datamart.sql): crea dimensiones y tabla de hechos.
 4. [`sql/03_etl/01_cargar_datamart.sql`](sql/03_etl/01_cargar_datamart.sql): carga el Data Mart. Solo incluye ventas `COMPLETADO`.
 5. [`sql/04_validaciones/`](sql/04_validaciones/): compara origen y Data Mart y revisa los KPI.
-6. Abrir [`powerbi/DNX_Cauchos_Dashboard.pbix`](powerbi/DNX_Cauchos_Dashboard.pbix) en Power BI Desktop y ajustar la conexión al servidor.
+6. Abrir [`powerbi/DNX_Cauchos_Dashboard_Final.pbix`](powerbi/DNX_Cauchos_Dashboard_Final.pbix) en Power BI Desktop y ajustar la conexión al servidor.
 
 > No se ha certificado la ejecución completa en una instancia SQL Server desde este repositorio.
 

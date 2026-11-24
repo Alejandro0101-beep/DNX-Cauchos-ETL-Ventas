@@ -1,6 +1,6 @@
 # Dashboard Power BI
 
-- [`DNX_Cauchos_Dashboard.pbix`](DNX_Cauchos_Dashboard.pbix): dashboard descrito en [`../documentacion/PowerBI/`](../documentacion/PowerBI/Documentacion.md).
+- [`DNX_Cauchos_Dashboard_Final.pbix`](DNX_Cauchos_Dashboard_Final.pbix): dashboard descrito en [`../documentacion/PowerBI/`](../documentacion/PowerBI/Documentacion.md).
 - La versión inicial está en [`../archivo/powerbi/`](../archivo/powerbi/DNX_Power_BI_historico.pbix).
 
 Se usa para estudiar ventas completadas del Data Mart (ventas netas, unidades, descuentos, costos y utilidad). Para abrirlo, usar Power BI Desktop; si la consulta apunta a un SQL Server local de otro equipo, cambiar el origen de datos y las credenciales.
