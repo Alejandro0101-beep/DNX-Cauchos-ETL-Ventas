@@ -1,0 +1,5 @@
+﻿id_metodoP,pk_metodoP,nombre_metodo,tipo_pago
+2,MTP-01,Efectivo,Contado
+3,MTP-02,Transferencia Bancaria,Bancario
+4,MTP-03,Yape / Plin,Digital
+5,MTP-04,Tarjeta de Crédito / Débito,Bancario
