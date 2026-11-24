@@ -1,4 +1,5 @@
-# Informe DNX Cauchos
+# Documentación del dashboard Power BI
+
 > **Fuentes y límites de verificación.** El texto se basa en archivos aportados por el equipo. Las capturas de SSMS del informe Word provienen del documento de experimentación compartido; los diagramas de esta versión web son reconstrucciones. No se simulan capturas de Power BI Desktop ni de una ejecución SQL no realizada.
 
 Documentación del dashboard Power BI
