@@ -123,6 +123,11 @@ El notebook académico entregado se apoyó en seis CSV exportados del Data Mart 
 
 La exportación `dim_cliente.csv` (240 000 filas) se almacena en ocho partes `.csv.gz` de 30 000 filas cada una; los demás archivos se comprimen individualmente. El script de reconstrucción reúne las partes en sus CSV originales y verifica sus SHA-256 contra `MANIFIESTO.json`. El notebook original `.ipynb.gz` se puede descomprimir con gzip. [Instrucciones](bigdata/README.md).
 
+
+## Documentación y experimentación
+
+Los informes detallados de SQL Server/ETL/Data Mart y Power BI se encuentran en [`documentacion/`](documentacion/README.md): cada componente incluye **documentación técnica** y **experimentación** con metodología, pruebas y resultados. En Big Data se conserva el notebook y el material aportado por el equipo.
+
 ## Evidencias y pendientes
 
 | Elemento | Estado |
